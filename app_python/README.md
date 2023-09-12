@@ -14,11 +14,11 @@ The is a simple web application built with Flask and guicorn as HTTP server. Thi
 
         python run.py -b 0.0.0.0:8000 app:app
 
-## Testing
+## Unit Tests
 
-Run:
+Run tests:
 
-    python test.py
+    python -m unittest tests.test
 
 ## Docker
 
