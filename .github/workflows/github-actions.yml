@@ -18,5 +18,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
+          cd app_python
           docker build -t ${{ secrets.DOCKER_IMAGE }} .
           docker push ${{ secrets.DOCKER_IMAGE }}
