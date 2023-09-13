@@ -1,5 +1,5 @@
 name: GitHub Actions
-run-name: CI
+run-name: Test, build & push
 on: [push]
 
 jobs:
@@ -12,16 +12,26 @@ jobs:
     #     env:
     #       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
+  # security:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: snyk/actions/setup@master
+  #     - uses: actions/setup-go@v1
+  #       with:
+  #         go-version: '1.19'
+  #     - name: Snyk test
+  #       run: cd app_python; snyk test
+  #       env:
+  #         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   security:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: snyk/actions/setup@master
-      - uses: actions/setup-go@v1
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
         with:
-          go-version: '1.19'
-      - name: Snyk test
-        run: cd app_python; snyk test
+          context: app_python
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
