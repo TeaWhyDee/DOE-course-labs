@@ -44,6 +44,10 @@ docker build --build-arg=PYTHON_BUILDER_IMAGE=al3xos/python-builder:3.9-debian11
 
 ## CI
 
+The GitHub Actions pipeline is as follows:
+
+1.  Check for
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
