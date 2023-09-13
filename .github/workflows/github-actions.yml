@@ -19,15 +19,13 @@ jobs:
           python-version: 3.9
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-      #
-      # - name: Run linter
-      #   run: pylint src
+        run: pip install -r requirements.txt
+
+      - name: Run linter
+        run: pylint src
 
       - name: Run tests
-        run: |
-          python -m unittest tests.test
+        run: python -m unittest tests.test
 
   build-and-push:
     needs: test
