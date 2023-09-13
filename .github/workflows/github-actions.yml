@@ -5,7 +5,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    woeking-directory: app_python
+    working-directory: app_python
 
     steps:
       - name: Checkout repository
