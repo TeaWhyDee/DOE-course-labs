@@ -16,7 +16,9 @@ jobs:
           python-version: 3.9
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          cd app_python
+          pip install -r requirements.txt
       #
       # - name: Run linter
       #   run: pylint src
@@ -33,6 +35,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          cd app_python
+          # cd app_python
           docker build -t ${{ secrets.DOCKER_IMAGE }} .
           docker push ${{ secrets.DOCKER_IMAGE }}
