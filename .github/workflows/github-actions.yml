@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+        with:
+          context: app_python
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python-3.8@master
         env:
@@ -34,7 +36,7 @@ jobs:
         run: python -m unittest tests.test
 
   build-and-push:
-    needs: test
+    needs: [security, test]
     runs-on: ubuntu-latest
 
     steps:
