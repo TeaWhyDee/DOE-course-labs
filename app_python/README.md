@@ -44,9 +44,18 @@ docker build --build-arg=PYTHON_BUILDER_IMAGE=al3xos/python-builder:3.9-debian11
 
 ## CI
 
+To run the pipeline, the following secrets need to be specified:
+
+*   **DOCKER\_IMAGE** - DockerHub image path like \<user>/\<package>.
+*   **DOCKER\_PASSWORD** - DockerHub password (or token).
+*   **DOCKER\_USERNAME** - DockerHub username.
+*   **SNYK\_TOKEN** - Snyk token.
+
 The GitHub Actions pipeline is as follows:
 
-1.  Check for
+1.  Check for security issues using Snyk.
+2.  Run unit tests.
+3.  If the furst two jobs are sucessfull, build and publish the Docker image.
 
 ## License
 
